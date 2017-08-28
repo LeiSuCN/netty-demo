@@ -1,9 +1,8 @@
 Practice for Netty.
 
-核心组件
-===============================
+# 核心组件
 
-- ChannelHandler
+## ChannelHandler
 
-- ChannelHandlerContext
+## ChannelHandlerContext
 
