@@ -47,3 +47,9 @@ Channel 0->1 ChannelPipeline 1->n ChannelHandler。
     |                                                                   |
     |  Netty Internal I/O Threads (Transport Implementation)            |
     +-------------------------------------------------------------------+
+	
+	
+## NIO
+
+### Channel(管道)和Buffer(缓冲器)
+- **唯一** **直接** 与Channel交互的Buffer： ByteBuffer
