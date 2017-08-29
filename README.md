@@ -3,21 +3,22 @@ Practice for Netty.
 ## 核心组件
 
 * Channel. -> Socket
-* EventLoop & EventLoopGroup
+* EventLoop.
 * ChannelFuture.
-* ChannelHandler。业务逻辑与网络处理代码的分离。
+* ChannelHandler.业务逻辑与网络处理代码的分离。
+* ChannelPipeline.
 * ChannelHandlerContext
 
 ```
-Channel --|  
+Channel --+  
 ...       |
-Channel ----> EventLoop(Single Thread) --|  
-										 |
-Channel --|								 --> EventLoopGroup
-		  |								 |
-Channel ----> EventLoop(Single Thread) --| 
+Channel --+-> EventLoop(Single Thread) --+  
+                                         |
+Channel --+                              |--> EventLoopGroup
+          |                              |
+Channel --+-> EventLoop(Single Thread) --+ 
 ...       |
-Channel --|
+Channel --+
 ```
 
 Channel 1->1 ChannelPipeline 1->n ChannelHandler。 
