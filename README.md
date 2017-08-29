@@ -2,12 +2,26 @@ Practice for Netty.
 
 ## 核心组件
 
-* Channel
+* Channel. -> Socket
+* EventLoop & EventLoopGroup
+* ChannelFuture.
 * ChannelHandler。业务逻辑与网络处理代码的分离。
 * ChannelHandlerContext
-* EventLoop&EventLoopGroup
 
-Channel 0->1 ChannelPipeline 1->n ChannelHandler。 
+```
+Channel --|  
+...       |
+Channel ----> EventLoop(Single Thread) --|  
+										 |
+Channel --|								 --> EventLoopGroup
+		  |								 |
+Channel ----> EventLoop(Single Thread) --| 
+...       |
+Channel --|
+```
+
+Channel 1->1 ChannelPipeline 1->n ChannelHandler。 
+
 
                                                    I/O Request
                                               via {@link Channel} or
@@ -53,3 +67,5 @@ Channel 0->1 ChannelPipeline 1->n ChannelHandler。
 
 ### Channel(管道)和Buffer(缓冲器)
 - **唯一** **直接** 与Channel交互的Buffer： ByteBuffer
+### Selector
+- Java NIO's selectors allow a single thread to monitor multiple channels of input.
