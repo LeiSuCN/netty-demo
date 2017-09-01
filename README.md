@@ -75,3 +75,6 @@ Channel 1->1 ChannelPipeline 1->n ChannelHandler。
 - Performance is enhanced by allowing the CPU to move on to other tasks while data copies proceed in parallel in another part of the machine. Also, zero-copy operations reduce the number of time-consuming mode switches between user space and kernel space. 
 - 目前只有在使用NIO和Epoll传输时才可以使用。input streams can support zero-copy through the java.nio.channels.FileChannel's transferTo() method if the underlying operating system also supports zero copy.
 - [wikipedia](https://en.wikipedia.org/wiki/Zero-copy)
+
+### Select, Poll, Epoll
+- [elect / poll / epoll: practical difference for system architects](https://www.ulduzsoft.com/2014/01/select-poll-epoll-practical-difference-for-system-architects/)
