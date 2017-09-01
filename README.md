@@ -2,7 +2,7 @@ Practice for Netty.
 
 ## 核心组件
 
-* Channel. -> Socket
+* Channel. -> Socket .屏蔽了底层实现，提供了统一的编程模型。
 * EventLoop.
 * ChannelFuture.
 * ChannelHandler.业务逻辑与网络处理代码的分离。
