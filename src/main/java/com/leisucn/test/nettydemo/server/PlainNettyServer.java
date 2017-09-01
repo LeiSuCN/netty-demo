@@ -38,7 +38,7 @@ public class PlainNettyServer {
 
 
     public void serve(int port, MODE mode) throws Exception{
-        final ByteBuf buf = Unpooled.copiedBuffer("Hi!\r\n", Charset.forName("UTF-8"));
+        //final ByteBuf buf = Unpooled.copiedBuffer("Hi!\r\n", Charset.forName("UTF-8"));
         EventLoopGroup group = getEventLoopGroup(mode);
 
         try{
@@ -52,7 +52,15 @@ public class PlainNettyServer {
                             ch.pipeline().addLast(new ChannelInboundHandlerAdapter(){
                                 @Override
                                 public void channelActive(ChannelHandlerContext ctx) throws Exception {
-                                    ctx.writeAndFlush(buf.duplicate()).addListener(ChannelFutureListener.CLOSE);
+                                    //ctx.writeAndFlush(buf.duplicate())
+                                    ctx.writeAndFlush(Unpooled.copiedBuffer("Hi!\r\n", Charset.forName("UTF-8")))
+                                    .addListener(ChannelFutureListener.CLOSE);
+                                }
+
+
+                                @Override
+                                public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+                                    cause.printStackTrace();
                                 }
                             });
                         }
