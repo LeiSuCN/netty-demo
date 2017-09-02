@@ -77,4 +77,11 @@ Channel 1->1 ChannelPipeline 1->n ChannelHandler。
 - [wikipedia](https://en.wikipedia.org/wiki/Zero-copy)
 
 ### Select, Poll, Epoll
-- [elect / poll / epoll: practical difference for system architects](https://www.ulduzsoft.com/2014/01/select-poll-epoll-practical-difference-for-system-architects/)
+- [select / poll / epoll: practical difference for system architects](https://www.ulduzsoft.com/2014/01/select-poll-epoll-practical-difference-for-system-architects/)
+
+### channel vs stream
+- channel: A channel represents an open connection to an entity such as a hardware device, a file, a network socket, or a program component that is capable of performing one or more distinct I/O operations, for example reading or writing.
+- buffer: A buffer is a linear, finite sequence of elements of a specific primitive type.
+- OutputStream: This abstract class is the superclass of all classes representing an output stream of bytes. An output stream accepts output bytes and sends them to some sink.
+- InputStream: This abstract class is the superclass of all classes representing an input stream of bytes.
+- stream 将连接和操作，数据类型全部耦合在了一起；而nio中将连接，操作，数据通过channel，（WritableByteChannel／ReadableByteChannel），Buffer解耦，更加符合SRP的理念。
