@@ -87,7 +87,7 @@ Channel 1-->1 ChannelPipeline 1-->n ChannelHandler 1-->1 ChannelHandlerContext
 - stream 将连接和操作，数据类型全部耦合在了一起；而nio中将连接，操作，数据通过channel，（WritableByteChannel／ReadableByteChannel），Buffer解耦，更加符合SRP的理念。
 
 
-## Pipeline
-Pipeline中包含ChannelHandlerContext的双向链表，每个ChannelHandlerContext封装了**一个**Handler
-Outbound是package的发送者：即write、read等请求包的发送者，Inbound是package的接受者
+## Pipeline，ChannelHandlerContext
+- Pipeline中包含ChannelHandlerContext的双向链表，每个ChannelHandlerContext封装了**一个**Handler
+- Outbound是package的发送者：即write、read等请求包的发送者，Inbound是package的接受者<br>
 Outbound并不是write，同理Inbound也不是read
