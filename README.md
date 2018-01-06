@@ -97,3 +97,27 @@ Outbound并不是write，同理Inbound也不是read
  public interface ChannelPipeline
         extends ChannelInboundInvoker, ChannelOutboundInvoker, Iterable<Entry<String, ChannelHandler>>
 - Invoker 命令的发起者
+- io.netty.channel.DefaultChannelPipeline<br>
+```
+/**
+ * The default {@link ChannelPipeline} implementation.  It is usually created
+ * by a {@link Channel} implementation when the {@link Channel} is created.
+ */
+public class DefaultChannelPipeline implements ChannelPipeline {
+...
+    protected DefaultChannelPipeline(Channel channel) {
+        this.channel = ObjectUtil.checkNotNull(channel, "channel");
+        succeededFuture = new SucceededChannelFuture(channel, null);
+        voidPromise =  new VoidChannelPromise(channel, true);
+
+        tail = new TailContext(this);
+        head = new HeadContext(this);
+
+        head.next = tail;
+        tail.prev = head;
+    }
+...
+}
+```
+
+- io.netty.channel.Channel.Unsafe: Unsafe operations that should never be called from user-code. These methods are only provided to implement the actual transport
