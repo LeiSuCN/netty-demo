@@ -91,3 +91,9 @@ Channel 1-->1 ChannelPipeline 1-->n ChannelHandler 1-->1 ChannelHandlerContext
 - Pipeline中包含ChannelHandlerContext的双向链表，每个ChannelHandlerContext封装了**一个**Handler
 - Outbound是package的发送者：即write、read等请求包的发送者，Inbound是package的接受者<br>
 Outbound并不是write，同理Inbound也不是read
+- public interface ChannelHandlerContext 
+	extends AttributeMap, ChannelInboundInvoker, ChannelOutboundInvoker<br>
+所以ChannelHandlerContext可以传播请求,即Invoker，如同Pipline：<br>
+ public interface ChannelPipeline
+        extends ChannelInboundInvoker, ChannelOutboundInvoker, Iterable<Entry<String, ChannelHandler>>
+- Invoker 命令的发起者
